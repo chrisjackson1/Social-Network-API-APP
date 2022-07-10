@@ -1,0 +1,24 @@
+{
+  "name": "Social-Network-API-APP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisjackson1/Social-Network-API-APP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisjackson1/Social-Network-API-APP/issues"
+  },
+  "homepage": "https://github.com/chrisjackson1/Social-Network-API-APP#readme"
+}
