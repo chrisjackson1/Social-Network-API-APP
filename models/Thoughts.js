@@ -1,29 +1,25 @@
 const { Schema, model } = require("mongoose");
-const Reaction = require('./Reaction');
+const reactionSchema = require('./Reaction');
+const dateFormat =  require('../utils/dateFormat')
 
 const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
       required: true,
-      minLengthL: 1,
-      minlength: 200,
+      minLength: 1,
+      minlength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: getDate,
+      get: timestamp => dateFormat(timestamp),
     },
     username: {
       type: String,
       required: true,
     },
-    reactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Reaction",
-      },
-    ],
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -32,13 +28,11 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
-function getDate(date) {
-  return date;
-}
+
 thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
 const Thought = model("thought", thoughtSchema);
 
-module.exports = thoughtSchema;
+module.exports = Thought;
