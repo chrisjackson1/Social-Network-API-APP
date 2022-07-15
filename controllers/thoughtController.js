@@ -23,9 +23,7 @@ module.exports = {
 },
  
  deleteThought(req, res) {
-    Thought.findByIdAndDelete(
-      { _id: req.params.userId })
-    
+    Thought.findByIdAndDelete({ _id: req.params.thoughtsId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No Thought with this id!' })

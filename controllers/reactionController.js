@@ -3,8 +3,7 @@ const Reaction = require('../models/Reaction');
 module.exports = {
 
 deleteReaction(req, res) {
-    Reaction.findOneAndUpdate(
-      { _id: req.params.userId })
+    Reaction.findOneAndUpdate({ _id: req.params.reactionId })
     
       .then((user) =>
         !user
@@ -17,8 +16,7 @@ deleteReaction(req, res) {
   },
 
   updateReaction(req, res) {
-    Reaction.findOneAndUpdate(
-      { _id: req.params.userId}, req.body)
+    Reaction.findOneAndUpdate({ _id: req.params.reactionId}, req.body)
       .then(() => res.json({ message: "Reaction and associated apps updated!"}))
       .catch ((err ) => res.status(500).json(err));
  }
