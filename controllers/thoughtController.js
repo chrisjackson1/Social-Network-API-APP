@@ -7,7 +7,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   getSingleThought(req, res) {
-    User.findOne({ _id: req.params.userId })
+    Thought.findOne({ _id: req.params.thoughtsId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No Thought with that ID' })
@@ -23,7 +23,7 @@ module.exports = {
 },
  
  deleteThought(req, res) {
-    User.findOneAndUpdate(
+    Thought.findByIdAndDelete(
       { _id: req.params.userId })
     
       .then((user) =>
@@ -37,8 +37,8 @@ module.exports = {
   },
 
   updateThought(req, res) {
-    User.findOneAndUpdate(
-      { _id: req.params.userId}, req.body)
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtsId}, req.body)
       .then(() => res.json({ message: "Thought and associated apps updated!"}))
       .catch ((err ) => res.status(500).json(err));
  }
