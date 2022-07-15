@@ -34,6 +34,14 @@ module.exports = {
   },
 
   //fix update user
+  addFriend(req, res) {
+    User.findOneAndUpdate({ _id: req.params.userId}, 
+      
+      {$addToSet: {friends : req.body }},
+      {runValidators: true, new: true })
+      .then(() => res.json({ message: "Friend and associated apps updated!" }))
+      .catch((err) => res.status(500).json(err));
+  },
 
   updateUser(req, res) {
     User.findOneAndUpdate({ _id: req.params.userId }, req.body)

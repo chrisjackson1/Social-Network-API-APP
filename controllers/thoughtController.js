@@ -1,9 +1,9 @@
-const Thought = require('../models/Thoughts');
+const  {User,Thought}  = require('../models/Index');
 
 module.exports = {
   getThoughts(req, res) {
-    User.find()
-      .then((users) => res.json(users))
+    Thought.find()
+      .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
   getSingleThought(req, res) {
@@ -17,7 +17,7 @@ module.exports = {
   },
 
   createThought(req, res) {
-    User.create(req.body)
+    Thought.create(req.body)
     .then((user) => res.json(user))
     .catch((err) => res.status(500).json(err));
 },
